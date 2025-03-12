@@ -31,12 +31,16 @@ const Layout = ({ children }: LayoutProps) => {
       });
     }, observerOptions);
 
-    const revealElements = document.querySelectorAll('.reveal');
-    revealElements.forEach(element => {
-      observer.observe(element);
-    });
+    // Using setTimeout to ensure DOM is fully loaded with the new page content
+    setTimeout(() => {
+      const revealElements = document.querySelectorAll('.reveal');
+      revealElements.forEach(element => {
+        observer.observe(element);
+      });
+    }, 100);
 
     return () => {
+      const revealElements = document.querySelectorAll('.reveal');
       revealElements.forEach(element => {
         observer.unobserve(element);
       });
