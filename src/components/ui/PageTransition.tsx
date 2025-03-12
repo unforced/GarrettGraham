@@ -13,7 +13,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
   const [transitionStage, setTransitionStage] = useState("fadeIn");
 
   useEffect(() => {
-    if (location.pathname !== displayLocation.pathname) {
+    if (location !== displayLocation) {
       setTransitionStage("fadeOut");
     }
   }, [location, displayLocation]);

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
@@ -70,12 +69,12 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <a 
-            href="#contact" 
+          <Link 
+            to="/contact" 
             className="btn-primary"
           >
             Book Consultation
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
@@ -110,12 +109,12 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-          <a 
-            href="#contact" 
+          <Link 
+            to="/contact" 
             className="btn-primary text-center mt-4"
           >
             Book Consultation
-          </a>
+          </Link>
         </div>
       </div>
     </header>
