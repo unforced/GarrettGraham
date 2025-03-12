@@ -1,118 +1,80 @@
 
 import { cn } from "@/lib/utils";
 
-const timelineEvents = [
+const milestones = [
   {
-    year: "2009",
-    title: "Personal Awakening",
-    description: "Began personal healing journey through spiritual practice and recovery work"
+    year: "2008",
+    title: "Spiritual Awakening",
+    description: "Began journey into spirituality through personal transformation and recovery"
   },
   {
     year: "2011",
-    title: "Spiritual Studies",
-    description: "Initiated studies in traditional Tibetan Buddhism and indigenous spiritual traditions"
+    title: "Tibetan Buddhist Studies",
+    description: "Started formal training in Tibetan Buddhist practices and philosophy"
   },
   {
     year: "2013",
-    title: "Formal Education",
-    description: "Started master's program in Clinical Counseling while continuing spiritual development"
+    title: "Lakota Spirituality",
+    description: "Began learning from Lakota elders and participating in traditional ceremonies"
   },
   {
     year: "2015",
-    title: "Holistic Training",
-    description: "Completed certifications in yoga, qigong, and energy healing modalities"
+    title: "Master's in Counseling",
+    description: "Completed Master's degree in Clinical Counseling with focus on holistic approaches"
   },
   {
     year: "2017",
-    title: "Advanced Studies",
-    description: "Deepened practice through apprenticeship with Shipibo and Amazonian shamanic traditions"
+    title: "Amazonian Shamanic Training",
+    description: "Traveled to Peru to study with Shipibo healers and shamanic traditions"
   },
   {
-    year: "2019",
-    title: "Professional Practice",
-    description: "Established formal counseling practice integrating multiple healing modalities"
-  },
-  {
-    year: "2021",
-    title: "Community Initiatives",
-    description: "Began developing community support programs and giving back initiatives"
-  },
-  {
-    year: "Present",
-    title: "Ongoing Evolution",
-    description: "Continuing to expand offerings and deepen practice while serving a growing community"
+    year: "2020",
+    title: "Private Practice Launch",
+    description: "Established private practice integrating various healing modalities"
   }
 ];
 
 const Timeline = () => {
   return (
-    <section className="section bg-beige-100 overflow-hidden">
+    <section className="section bg-white">
       <div className="container-custom">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4 reveal">
           <span className="inline-block px-3 py-1 bg-amber-500/10 text-amber-700 rounded-full text-sm font-medium">
-            Professional Journey
+            My Path
           </span>
-          <h2 className="text-stone-800 font-serif">Path of Development</h2>
+          <h2 className="text-stone-800 font-serif">Journey Through Time</h2>
           <p className="text-stone-600">
-            Key milestones in my personal and professional evolution as a healer and guide.
+            Key milestones that have shaped my approach to healing and transformation
           </p>
         </div>
         
         <div className="relative">
           {/* Timeline center line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-amber-200 rounded-full hidden md:block"></div>
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-amber-200"></div>
           
           <div className="space-y-12 relative">
-            {timelineEvents.map((event, index) => (
+            {milestones.map((milestone, index) => (
               <div 
-                key={index}
-                className="relative flex flex-col md:flex-row gap-8 md:gap-0 items-center reveal"
+                key={index} 
+                className={cn(
+                  "flex flex-col md:flex-row items-center reveal",
+                  index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                )}
               >
-                {/* Year marker for mobile */}
-                <div className="md:hidden w-full text-center mb-2">
-                  <span className="inline-block px-4 py-1 bg-amber-500 text-white rounded-full text-sm font-semibold">
-                    {event.year}
-                  </span>
-                </div>
-                
-                {/* Left content (odd index) */}
                 <div className={cn(
-                  "md:w-1/2 md:pr-12 space-y-2",
-                  index % 2 === 1 ? "md:text-right" : "md:hidden"
+                  "w-full md:w-1/2 p-6 md:p-10",
+                  index % 2 !== 0 ? "md:text-right" : ""
                 )}>
-                  {index % 2 === 1 && (
-                    <>
-                      <h3 className="text-xl font-serif font-semibold text-stone-800">{event.title}</h3>
-                      <p className="text-stone-600">{event.description}</p>
-                    </>
-                  )}
+                  <span className="text-amber-500 font-bold text-xl">{milestone.year}</span>
+                  <h3 className="text-xl font-serif font-semibold mb-3 text-stone-800">{milestone.title}</h3>
+                  <p className="text-stone-600">{milestone.description}</p>
                 </div>
                 
-                {/* Center marker */}
-                <div className="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center justify-center">
-                  <div className="w-16 h-16 rounded-full bg-amber-500 text-white flex items-center justify-center text-sm font-bold z-10 border-4 border-white">
-                    {event.year}
-                  </div>
+                <div className="mx-4 z-10 bg-amber-100 rounded-full p-4 my-4 md:my-0">
+                  <div className="w-4 h-4 bg-amber-500 rounded-full"></div>
                 </div>
                 
-                {/* Right content (even index) */}
-                <div className={cn(
-                  "md:w-1/2 md:pl-12 space-y-2",
-                  index % 2 === 0 ? "md:ml-auto" : "md:hidden"
-                )}>
-                  {index % 2 === 0 && (
-                    <>
-                      <h3 className="text-xl font-serif font-semibold text-stone-800">{event.title}</h3>
-                      <p className="text-stone-600">{event.description}</p>
-                    </>
-                  )}
-                </div>
-                
-                {/* Mobile content (displayed for both but hidden on desktop) */}
-                <div className="md:hidden w-full space-y-2">
-                  <h3 className="text-xl font-serif font-semibold text-stone-800">{event.title}</h3>
-                  <p className="text-stone-600">{event.description}</p>
-                </div>
+                <div className="w-full md:w-1/2"></div>
               </div>
             ))}
           </div>

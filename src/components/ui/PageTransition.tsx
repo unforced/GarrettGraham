@@ -13,7 +13,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
   const [transitionStage, setTransitionStage] = useState("fadeIn");
 
   useEffect(() => {
-    if (location !== displayLocation) {
+    if (location.pathname !== displayLocation.pathname) {
       setTransitionStage("fadeOut");
     }
   }, [location, displayLocation]);
@@ -22,6 +22,7 @@ const PageTransition = ({ children }: PageTransitionProps) => {
     if (transitionStage === "fadeOut") {
       setTransitionStage("fadeIn");
       setDisplayLocation(location);
+      window.scrollTo(0, 0);
     }
   };
 
